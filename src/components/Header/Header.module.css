@@ -1,0 +1,27 @@
+
+.header {
+    background: #f4f4f4;
+    display: flex;
+    justify-content: space-between;
+    padding: 1.25rem ;
+}
+
+.header img{
+    height: 2rem;
+}
+
+.userInfo{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+}
+
+.person{
+    padding-right: 0.5rem;
+}
+
+.cart{
+    padding-right: 6rem;
+    padding-left: 3rem;
+}
+

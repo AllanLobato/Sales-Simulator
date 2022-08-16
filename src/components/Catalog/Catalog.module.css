@@ -1,0 +1,9 @@
+.productName{
+    display: flex;
+    background-color: #f4f4f4;
+    margin-top: 3rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    height: 2.5rem;
+    align-items: center;
+}

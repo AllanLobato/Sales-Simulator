@@ -1,0 +1,46 @@
+.principal{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.right{
+  background-color: #f4f4f4;
+  text-align:left;
+  padding-right: 4.5rem;
+  padding-left: 50%;
+  padding-top: 3.5rem;
+  height: 100vh;
+}
+
+
+.left{
+    display: grid;
+    text-align:left;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: 3.5rem;
+    margin-left: 2.5rem;
+}
+
+.textHome{
+    padding-top:2rem;
+    padding-bottom:2rem;
+}
+
+.access{
+    width: 22.5rem;
+}
+
+.usuario{
+    padding-top: 2rem;
+    
+}
+
+.forgotPass{
+    padding-bottom: 2rem;
+
+}
+
+.button{
+    padding-bottom: 1rem;
+}

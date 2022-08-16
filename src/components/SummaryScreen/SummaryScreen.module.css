@@ -1,0 +1,64 @@
+.principal{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.leftCard{
+    display: flexbox;
+    margin-left: 5rem;
+    margin-right: 2.5rem;
+    text-align:left;
+    align-items: flex-start;
+    justify-content: flex-start;
+    
+}
+
+.productName{
+    margin-top: 3rem;
+    padding: 1rem;
+    background: #f4f4f4;
+    width: 100%;
+    
+}
+
+.boletoPay{
+    padding: 1rem;
+}
+
+.line{
+    width: 100%;
+    background: #f4f4f4;
+    height: 0.25rem;
+}
+
+.finalValue{
+    padding: 1rem;
+}
+
+.warning{
+    padding: 1rem;
+
+}
+
+.button{
+    padding-top: 2rem;
+    margin-left: 50%;
+}
+
+.rightCard{
+    display: flexbox;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    text-align:left;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.summary{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+    padding: 1rem;
+    background: #f4f4f4;
+    width: 100%;
+}
