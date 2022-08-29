@@ -4,10 +4,16 @@
     display: flex;
     justify-content: space-between;
     padding: 1.25rem ;
+    padding-left: 4rem;
 }
 
 .header img{
     height: 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    font-family: cursive;
+    cursor: pointer;
 }
 
 .userInfo{
@@ -21,7 +27,26 @@
 }
 
 .cart{
-    padding-right: 6rem;
+    padding-right: 5rem;
     padding-left: 3rem;
 }
 
+  .my_shop {
+    cursor: pointer;
+  }
+  .cart {
+    cursor: pointer;
+  }
+  .cart span:nth-child(1) {
+    font-size: 2rem;
+    color: black;
+  }
+  .cart span:nth-child(2) {
+    padding: 0 3px;
+    background-color: red;
+    color: white;
+    font-weight: bolx;
+    border-radius: 5px;
+    position: relative;
+    top: -15px;
+  }

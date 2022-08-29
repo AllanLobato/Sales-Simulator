@@ -1,6 +1,5 @@
 import React from "react";
-import { Header } from "../Header/Header";
-import styles from "./ConfirmationScreen.module.css";
+import styles from "./QrCodeScreen.module.css";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -12,10 +11,9 @@ const theme = createTheme({
   },
 });
 
-export function ConfirmationScreen() {
+export function QrCodeScreen() {
   return (
     <>
-      <Header />
       <ThemeProvider theme={theme}>
         <div className={styles.principal}>
           <div className={styles.leftCard}>
@@ -44,6 +42,21 @@ export function ConfirmationScreen() {
                 A data de vencimento é de 2 dias corridos após a conclusão do
                 pedido. Após esta data, ele perderá a validade.
               </p>
+            </div>
+          </div>
+
+          <div className={styles.rightCard}>
+            <div className={styles.summary}>
+              <h2>Resumo do Pedido</h2>
+            </div>
+            <div className={styles.summary}>
+              <h4>Itens do Pedido</h4>
+              <h4>Qtde</h4>
+              <h4>Preço</h4>
+            </div>
+            <div className={styles.summary}>
+              <h2>Total</h2>
+              <h2>R$499,80</h2>
             </div>
           </div>
         </div>

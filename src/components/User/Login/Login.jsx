@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import styles from "../Login/Login.module.css";
 import "../../../global.css";
 import logo from "../../../assets/logo.svg";
+import { Link } from "react-router-dom";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -64,12 +65,16 @@ export default function Login() {
               <p>Esqueceu a senha?</p>
             </div>
             <div className={styles.button}>
-              <Button fullWidth={true} variant="contained">
-                Entrar
-              </Button>
+              <Link to="catalog">
+                <Button fullWidth={true} variant="contained">
+                  Entrar
+                </Button>
+              </Link>
             </div>
             <div>
-              <p>Não possui uma conta? Cadastre-se agora.</p>
+              <Link to="registration">
+                <p>Não possui uma conta? Cadastre-se agora.</p>
+              </Link>
             </div>
           </div>
         </div>

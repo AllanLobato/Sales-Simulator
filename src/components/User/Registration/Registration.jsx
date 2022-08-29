@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import styles from "./Registration.module.css";
 import "../../../global.css";
 import logo from "../../../assets/logo.svg";
+import { Link } from "react-router-dom";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -84,12 +85,16 @@ export default function Registration() {
               <p>Esqueceu a senha?</p>
             </div>
             <div className={styles.button}>
-              <Button fullWidth={true} variant="contained">
-                Finalizar Cadastro
-              </Button>
+              <Link to="catalog">
+                <Button fullWidth={true} variant="contained">
+                  Finalizar Cadastro
+                </Button>
+              </Link>
             </div>
             <div>
-              <p>Não possui uma conta? Cadastre-se agora.</p>
+              <Link to="/">
+                <p>Já possui uma conta? Entre agora.</p>
+              </Link>
             </div>
           </div>
         </div>
