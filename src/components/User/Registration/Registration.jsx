@@ -5,6 +5,7 @@ import styles from "./Registration.module.css";
 import "../../../global.css";
 import logo from "../../../assets/logo.svg";
 import { Link } from "react-router-dom";
+import listRoutes from "../../../routes";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -84,15 +85,15 @@ export default function Registration() {
             <div className={styles.forgotPass}>
               <p>Esqueceu a senha?</p>
             </div>
-            <div className={styles.button}>
-              <Link to="catalog">
+            <div className={listRoutes.login.path}>
+              <Link to={listRoutes.catalog.path}>
                 <Button fullWidth={true} variant="contained">
                   Finalizar Cadastro
                 </Button>
               </Link>
             </div>
             <div>
-              <Link to="/">
+              <Link to={listRoutes.login.path}>
                 <p>Já possui uma conta? Entre agora.</p>
               </Link>
             </div>

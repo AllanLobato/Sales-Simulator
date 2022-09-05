@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./SummaryScreen.module.css";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
+import listRoutes from "../../../routes";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -40,7 +41,7 @@ export function SummaryScreen() {
             </div>
 
             <div className={styles.button}>
-              <Link to="qrcode">
+              <Link to="/qrcode">
                 <Button fullWidth={true} variant="contained" size="medium">
                   Finalizar compra
                 </Button>
@@ -48,7 +49,7 @@ export function SummaryScreen() {
             </div>
 
             <div className={styles.button}>
-              <Link to="catalog">
+              <Link to={listRoutes.catalog.path}>
                 <Button fullWidth={true} variant="outlined">
                   Voltar para a loja
                 </Button>

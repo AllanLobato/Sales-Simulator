@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../Card/Card.module.css";
 import Button from "@mui/material/Button";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+import { Actions as CartActions } from "../../redux/ducks/cart";
+import { useDispatch, useSelector } from "react-redux";
+
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+
+import { Catalog } from "../pages/Catalog/Catalog";
+import listRoutes from "../../routes";
 
 const theme = createTheme({
   palette: {
@@ -11,8 +20,18 @@ const theme = createTheme({
   },
 });
 
-export const Card = ({ item, handleClick }) => {
+export const Card = ({ item }) => {
   const { title, price, img } = item;
+
+  const dispatch = useDispatch();
+
+  const handleAddProduct = () => {
+    dispatch(CartActions.addToCart(item));
+  };
+
+  const cart = useSelector((state) => state);
+
+  useEffect(() => {}, [cart]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -28,7 +47,7 @@ export const Card = ({ item, handleClick }) => {
               <Button
                 fullWidth={true}
                 variant="outlined"
-                onClick={() => handleClick(item)}
+                onClick={handleAddProduct}
               >
                 Add ao carrinho
               </Button>
@@ -39,3 +58,13 @@ export const Card = ({ item, handleClick }) => {
     </ThemeProvider>
   );
 };
+
+const mapStateToProps = (state) => ({
+  amount: state.cart.reduce((amount, product) => {
+    amount[product.id] = product.amount;
+    return amount;
+  }, {}),
+});
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(CartActions, dispatch);
+export default connect(mapStateToProps, mapDispatchToProps)(Catalog);

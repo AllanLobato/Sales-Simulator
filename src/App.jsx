@@ -1,15 +1,10 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import listRoutes from "./routes";
+import Header from "./components/Header/Header";
 import Login from "./components/User/Login/Login";
 import Registration from "./components/User/Registration/Registration";
-import { Header } from "./components/Header/Header";
-import { Catalog } from "./components/pages/Catalog/Catalog";
-import { ShoppingCart } from "./components/pages/ShoppingCart/ShoppingCart";
-import { SummaryScreen } from "./components/pages/SummaryScreen/SummaryScreen";
-import { QrCodeScreen } from "./components/pages/QrCode/QrCodeScreen";
-import { ConfirmationScreen } from "./components/pages/ConfirmationScreen/ConfirmationScreen";
 
 export default function App() {
   const [show, setShow] = useState(true);
@@ -32,7 +27,12 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <Header setShow={setShow} size={cart.length} />
+      <Header
+        path="header"
+        element={<Header />}
+        setShowpath={setShow}
+        size={cart.length}
+      />
       {/* {show ? (
         <Catalog handleClick={handleClick} />
       ) : (
@@ -43,8 +43,16 @@ export default function App() {
         />
       )} */}
       <Routes>
-        <Route path="catalog" element={<Catalog />} />
-        <Route
+        {Object.keys(listRoutes).map((route) => {
+          return (
+            <Route
+              path={listRoutes[route].path}
+              element={listRoutes[route].component}
+            />
+          );
+        })}
+        {/* <Route path="catalog" element={<Catalog />} /> */}
+        {/* <Route
           path="shopping"
           element={
             <ShoppingCart
@@ -57,8 +65,8 @@ export default function App() {
         <Route path="summary" element={<SummaryScreen />} />
         <Route path="qrcode" element={<QrCodeScreen />} />
         <Route path="confirmation" element={<ConfirmationScreen />} />
-        <Route path="/" element={<Login />} exact />
-        <Route path="registration" element={<Registration />} />
+        <Route path="/" element={<Login />} exact /> */}
+        {/* <Route path="registration" element={<Registration />} /> */}
       </Routes>
     </BrowserRouter>
   );

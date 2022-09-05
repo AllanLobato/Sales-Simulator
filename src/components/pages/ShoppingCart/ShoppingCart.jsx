@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./ShoppingCart.module.css";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
+import listRoutes from "../../../routes";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -14,34 +15,34 @@ const theme = createTheme({
 });
 
 export function ShoppingCart({ cart, setCart, handleChange }) {
-  const [price, setPrice] = useState(0);
+  // const [price, setPrice] = useState(0);
 
-  const handleRemove = (id) => {
-    const arr = cart.filter((item) => item.id !== id);
-    setCart(arr);
-    handlePrice();
-  };
+  // const handleRemove = (id) => {
+  //   const arr = cart.filter((item) => item.id !== id);
+  //   setCart(arr);
+  //   handlePrice();
+  // };
 
-  const handlePrice = () => {
-    let ans = 0;
-    cart.map((item) => (ans += item.amount * item.price));
-    setPrice(ans);
-  };
+  // const handlePrice = () => {
+  //   let ans = 0;
+  //   cart.map((item) => (ans += item.amount * item.price));
+  //   setPrice(ans);
+  // };
 
-  useEffect(() => {
-    handlePrice();
-  });
+  // useEffect(() => {
+  //   handlePrice();
+  // });
 
   return (
     <>
       <ThemeProvider theme={theme}>
         <div className={styles.principal}>
-          <div className={styles.leftCard}>
+          {/* <div className={styles.leftCard}>
             <div className={styles.productName}>
               <h2>Meu Carrinho</h2>
             </div>
 
-            {cart.map((item) => (
+            {item.map((item) => (
               <div className={styles.cart_box} key={item.id}>
                 <div className={styles.cart_img}>
                   <img src={item.img} alt="" />
@@ -70,7 +71,7 @@ export function ShoppingCart({ cart, setCart, handleChange }) {
                 </div>
               </div>
             ))}
-          </div>
+          </div> */}
 
           <div className={styles.rightCard}>
             <div className={styles.summary}>
@@ -81,7 +82,7 @@ export function ShoppingCart({ cart, setCart, handleChange }) {
                   <h2>Subtotal</h2>
                 </div>
                 <div className={styles.value}>
-                  <h2>R$ {price.toFixed(2)}</h2>
+                  <h2>R$ {}</h2>
                 </div>
               </div>
 
@@ -97,11 +98,11 @@ export function ShoppingCart({ cart, setCart, handleChange }) {
                   <h2>Valor Total</h2>
                 </div>
                 <div className={styles.value}>
-                  <h2>R$ {price.toFixed(2)}</h2>
+                  <h2>R$ {}</h2>
                 </div>
               </div>
               <div className={styles.button}>
-                <Link to="summary">
+                <Link to={listRoutes.summaryScreen.path}>
                   <Button fullWidth={true} variant="contained" size="medium">
                     Finalizar compra
                   </Button>
@@ -109,7 +110,7 @@ export function ShoppingCart({ cart, setCart, handleChange }) {
               </div>
 
               <div className={styles.button}>
-                <Link to="catalog">
+                <Link to={listRoutes.catalog.path}>
                   <Button fullWidth={true} variant="outlined">
                     Escolher mais produtos
                   </Button>

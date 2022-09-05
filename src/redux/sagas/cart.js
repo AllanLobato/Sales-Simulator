@@ -1,18 +1,49 @@
-import { call, put, takeEvery} from 'redux-saga/effects';
-//call faz a chamada da API e put faz a chamada da action
-import { Types, Actions } from '../ducks/cart';
-import { getProducts } from '../../services/apiProductsService';
+import produce from 'immer';
 
-
-function* workGetProductsFetch(){
-    const products = yield call(getProducts); // API function waiting for the call finish
-    yield put( Actions.setProductsFetch (products) ) // PUT na action object
+export default function cart(state = [], action) {
+  switch (action.type) {
+    case 'CART_ADD':
+      return produce(state, draft => {
+        const productIndex = draft.findIndex(p => p.id === action.product.id);
+        if (productIndex >= 0) {
+          draft[productIndex].amount += 1;
+        } else {
+          draft.push({
+            ...action.product,
+            amount: 1,
+          });
+        }
+      });
+    case 'CART_REMOVE':
+      return produce(state, draft => {
+        const productIndex = draft.findIndex(p => p.id === action.id);
+        if (productIndex >= 0) {
+          draft.splice(productIndex, 1);
+        }
+      });
+    case 'UPDATE_AMOUNT': {
+      if (action.amount <= 0) {
+        return state;
+      }
+      return produce(state, draft => {
+        const productIndex = draft.findIndex(p => p.id === action.id);
+        if (productIndex >= 0) {
+          draft[productIndex].amount = Number(action.amount);
+        }
+      });
+    }
+    default:
+      return state;
+  }
 }
 
 
-function* mySaga() {
-    yield takeEvery(Types.GET_PRODUCTS, workGetProductsFetch);
-}
-//Toda vez que chamar GET_PRODUCTS_FETCH executa a função workGetPRoductsFetch
 
-export default mySaga;
+
+
+
+
+
+
+
+
