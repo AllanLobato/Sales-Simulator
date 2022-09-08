@@ -15,7 +15,7 @@ export const Actions = {
 }
 
 export default function myProducts(state = { products: [] }, action) {
-    console.log('action', action)
+    // console.log('action', action)
     switch(action.type) {
         case Types.SET_PRODUCTS:
         return { ...state, products: action.payload}

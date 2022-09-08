@@ -10,39 +10,17 @@ import { getProducts } from "../../../services/apiProductsService";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
-//   handleAddProduct = product => {
-//     const { addToCart } = this.props;
-//     addToCart(product);
-//   };
-
 export function Catalog() {
-  // const [products, setProducts] = useState([]);
-
-  // async function getProducts() {
-  //   const response = await api.get("products");
-  //   const data = response.data.map((product) => ({
-  //     ...product,
-  //   }));
-  // }
+  // const teste = useSelector((state) => state);
 
   // useEffect(() => {
-  //   getProducts();
-
-  //   return () => {
-  //     setProducts(products);
-  //   };
-  // }, [products]);
-
-  const teste = useSelector((state) => state);
-
-  useEffect(() => {
-    console.log("effect", teste);
-  }, [teste]);
+  //   console.log("effect", teste);
+  // }, [teste]);
 
   const dispatch = useDispatch();
 
   const products = useSelector((state) => state.products.products); //const products para fazer o map
-  console.log(products);
+  // console.log(products);
 
   const getProducts = () => {
     dispatch(ProductsActions.getProductsFetch());

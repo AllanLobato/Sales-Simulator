@@ -7,32 +7,9 @@ import Login from "./components/User/Login/Login";
 import Registration from "./components/User/Registration/Registration";
 
 export default function App() {
-  const [show, setShow] = useState(true);
-  const [cart, setCart] = useState([]);
-
-  console.log(cart);
-
-  const handleClick = (item) => {
-    if (cart.indexOf(item) !== -1) return;
-    setCart([...cart, item]);
-  };
-
-  const handleChange = (item, d) => {
-    const ind = cart.indexOf(item);
-    const arr = cart;
-    arr[ind].amount += d;
-    if (arr[ind].amount === 0) arr[ind].amount = 1;
-    setCart([...arr]);
-  };
-
   return (
     <BrowserRouter>
-      <Header
-        path="header"
-        element={<Header />}
-        setShowpath={setShow}
-        size={cart.length}
-      />
+      <Header path="header" element={<Header />} />
       {/* {show ? (
         <Catalog handleClick={handleClick} />
       ) : (

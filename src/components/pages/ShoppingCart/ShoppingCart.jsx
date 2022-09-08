@@ -3,6 +3,7 @@ import styles from "./ShoppingCart.module.css";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import listRoutes from "../../../routes";
+import { useDispatch, useSelector } from "react-redux";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -14,20 +15,22 @@ const theme = createTheme({
   },
 });
 
-export function ShoppingCart({ cart, setCart, handleChange }) {
-  // const [price, setPrice] = useState(0);
+export function ShoppingCart({ product, setCart, handleAddProduct }) {
+  const [price, setPrice] = useState(0);
 
-  // const handleRemove = (id) => {
-  //   const arr = cart.filter((item) => item.id !== id);
-  //   setCart(arr);
-  //   handlePrice();
-  // };
+  const cart = useSelector(({ cart }) => cart);
 
-  // const handlePrice = () => {
-  //   let ans = 0;
-  //   cart.map((item) => (ans += item.amount * item.price));
-  //   setPrice(ans);
-  // };
+  const handleRemove = (id) => {
+    const newArr = cart.filter((item) => item.id !== id);
+    return newArr;
+    handlePrice();
+  };
+
+  const handlePrice = () => {
+    let ans = 0;
+    cart.map((item) => (ans += item.amount * item.price));
+    return ans;
+  };
 
   // useEffect(() => {
   //   handlePrice();
@@ -37,12 +40,12 @@ export function ShoppingCart({ cart, setCart, handleChange }) {
     <>
       <ThemeProvider theme={theme}>
         <div className={styles.principal}>
-          {/* <div className={styles.leftCard}>
+          <div className={styles.leftCard}>
             <div className={styles.productName}>
               <h2>Meu Carrinho</h2>
             </div>
 
-            {item.map((item) => (
+            {cart.map((item) => (
               <div className={styles.cart_box} key={item.id}>
                 <div className={styles.cart_img}>
                   <img src={item.img} alt="" />
@@ -58,9 +61,11 @@ export function ShoppingCart({ cart, setCart, handleChange }) {
                   </div>
 
                   <div className={styles.addCart}>
-                    <button onClick={() => handleChange(item, 1)}>+</button>
+                    <button onClick={() => handleAddProduct(item, 1)}>+</button>
                     <button>{item.amount}</button>
-                    <button onClick={() => handleChange(item, -1)}>-</button>
+                    <button onClick={() => handleAddProduct(item, -1)}>
+                      -
+                    </button>
                   </div>
 
                   <div className={styles.remove}>
@@ -71,7 +76,7 @@ export function ShoppingCart({ cart, setCart, handleChange }) {
                 </div>
               </div>
             ))}
-          </div> */}
+          </div>
 
           <div className={styles.rightCard}>
             <div className={styles.summary}>

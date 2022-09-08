@@ -23,15 +23,34 @@ const theme = createTheme({
 export const Card = ({ item }) => {
   const { title, price, img } = item;
 
+  const cart = useSelector(({ cart }) => cart);
+
   const dispatch = useDispatch();
 
   const handleAddProduct = () => {
-    dispatch(CartActions.addToCart(item));
+    const newCart = verifyExistItem();
+    console.log(newCart);
+    dispatch(CartActions.updateCart(newCart));
   };
 
-  const cart = useSelector((state) => state);
-
   useEffect(() => {}, [cart]);
+
+  function verifyExistItem() {
+    const existItem = cart.some((product) => product.id === item.id);
+
+    if (existItem) {
+      const newCart = cart.map((product) => {
+        return product.id === item.id
+          ? { ...product, amount: product.amount + 1 }
+          : product;
+      });
+      return newCart;
+    } else {
+      const newItem = { ...item, amount: 1 };
+      const newCart = [...cart, newItem];
+      return newCart;
+    }
+  }
 
   return (
     <ThemeProvider theme={theme}>
