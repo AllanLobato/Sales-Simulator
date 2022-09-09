@@ -11,27 +11,17 @@ export const Actions = {
       type: Types.UPDATE_CART,
       payload,
     }),
-  removeFromCart: (id) => ({
-      type: Types.CART_REMOVE,
-      id,
-    }),
-  updateAmount: (id, amount) => ({
-      type: Types.UPDATE_AMOUNT,
-      id,
-      amount,
-    })
   }
 
   export default function cart(state = [], action) {
     console.log('action', action)
     switch (action.type) {
       case Types.UPDATE_CART:
-        return action.payload;
+        return [...action.payload];
         default:
           return state;
          }
-        }
-
+        };
 
 
 
