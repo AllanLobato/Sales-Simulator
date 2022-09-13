@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import styles from "./QrCodeScreen.module.css";
+import QRCodeCanvas from "../../QRCodeCanvas/QRCodeCanvas";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -12,6 +13,10 @@ const theme = createTheme({
 });
 
 export function QrCodeScreen() {
+  const [text, setText] = useState("Alguma coisa");
+
+  const random = Math.floor(Math.random() * 10 + 5000);
+
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -26,17 +31,22 @@ export function QrCodeScreen() {
             <div className={styles.line}></div>
 
             <div className={styles.finalValue}>
-              <h1>Nº do pedido:</h1>
+              <h1>Nº do pedido: {random}</h1>
               <p>
                 Agora você pode escanear com seu celular para ter acesso ao
                 boleto!
               </p>
+
+              <input
+                onChange={(element) => setText(element.target.value)}
+                value={text}
+                type="text"
+              />
+
+              <QRCodeCanvas text={text}></QRCodeCanvas>
             </div>
 
             <div className={styles.warning}>
-              <p>Vai pagar online? Copie e cole o código do seu boleto</p>
-              <div className={styles.codeLine}></div>
-
               <p className={styles.vencimento}>
                 Você poderá visualizar ou imprimir após a finalização do pedido.
                 A data de vencimento é de 2 dias corridos após a conclusão do

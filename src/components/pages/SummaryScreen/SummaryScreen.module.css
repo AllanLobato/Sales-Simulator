@@ -49,9 +49,29 @@
     display: flexbox;
     margin-left: 5rem;
     margin-right: 5rem;
-    text-align:left;
+
     align-items: flex-start;
     justify-content: flex-start;
+}
+
+.summaryFixed{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+    padding: 1rem;
+    background: #f4f4f4;
+    color: black;
+    width: 100%;
+}
+
+.summaryDynamic{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+    padding: 1rem;
+    background: #f4f4f4;
+    color: black;
+    width: 100%;
 }
 
 .summary{
