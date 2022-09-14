@@ -1,7 +1,6 @@
 
-import { combineReducers, createStore, applyMiddleware } from "redux";
+import {  createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
-import myProducts from "./ducks/products";
 import reducer from "./ducks"
 import sagas from "./sagas";
 

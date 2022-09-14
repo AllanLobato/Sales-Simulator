@@ -15,7 +15,6 @@ export const Types = {
     }
 
     export default function client(state = [], action) {
-        console.log('action', action)
         switch (action.type) {
           case Types.CLIENT_LOGIN:
             return [...action.payload];

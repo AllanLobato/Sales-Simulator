@@ -6,4 +6,9 @@
     margin-right: 5rem;
     height: 2.5rem;
     align-items: center;
+    justify-content: space-between;
+}
+
+.getButton {
+    border-color: #f4f4f4;
 }

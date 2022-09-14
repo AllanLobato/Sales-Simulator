@@ -4,12 +4,12 @@ import Button from "@mui/material/Button";
 import styles from "./Registration.module.css";
 import "../../../global.css";
 import logo from "../../../assets/logo.svg";
-import { Link } from "react-router-dom";
-import listRoutes from "../../../routes";
+import { listRoutes } from "../../../routes";
 import { useFormik } from "formik";
 import validatorSchema from "./validatorSchema";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Actions as ClientActions } from "../../../redux/ducks/client";
+import { Link } from "react-router-dom";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -125,27 +125,27 @@ export default function Registration() {
               <p>Esqueceu a senha?</p>
             </div>
             <div className={listRoutes.login.path}>
-              {/* <Link to={listRoutes.catalog.path}> */}
-              <Button
-                fullWidth={true}
-                variant="contained"
-                onClick={(formik.handleSubmit, handleSubmitStorage)}
-                disabled={
-                  formik.errors.login ||
-                  formik.errors.password ||
-                  formik.errors.passwordMatch
-                    ? true
-                    : false
-                }
-              >
-                Finalizar Cadastro
-              </Button>
-              {/* </Link> */}
+              <Link to={listRoutes.catalog.path}>
+                <Button
+                  fullWidth={true}
+                  variant="contained"
+                  onClick={(formik.handleSubmit, handleSubmitStorage)}
+                  disabled={
+                    formik.errors.login ||
+                    formik.errors.password ||
+                    formik.errors.passwordMatch
+                      ? true
+                      : false
+                  }
+                >
+                  Finalizar Cadastro
+                </Button>
+              </Link>
             </div>
             <div>
-              {/* <Link to={listRoutes.login.path}> */}
-              <p>Já possui uma conta? Entre agora.</p>
-              {/* </Link> */}
+              <Link to={listRoutes.login.path}>
+                <p>Já possui uma conta? Entre agora.</p>
+              </Link>
             </div>
           </form>
         </div>

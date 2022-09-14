@@ -6,12 +6,6 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Actions as CartActions } from "../../redux/ducks/cart";
 import { useDispatch, useSelector } from "react-redux";
 
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-
-import { Catalog } from "../pages/Catalog/Catalog";
-import listRoutes from "../../routes";
-
 const theme = createTheme({
   palette: {
     primary: {
@@ -29,7 +23,6 @@ export const Card = ({ item }) => {
 
   const handleAddProduct = () => {
     const newCart = verifyExistItem();
-    console.log(newCart);
     dispatch(CartActions.updateCart(newCart));
   };
 
@@ -77,13 +70,3 @@ export const Card = ({ item }) => {
     </ThemeProvider>
   );
 };
-
-// const mapStateToProps = (state) => ({
-//   amount: state.cart.reduce((amount, product) => {
-//     amount[product.id] = product.amount;
-//     return amount;
-//   }, {}),
-// });
-// const mapDispatchToProps = (dispatch) =>
-//   bindActionCreators(CartActions, dispatch);
-// export default connect(mapStateToProps, mapDispatchToProps)(Catalog);

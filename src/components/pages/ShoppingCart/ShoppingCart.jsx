@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styles from "./ShoppingCart.module.css";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
-import listRoutes from "../../../routes";
+import listRoutes from "../../../routes/listRoutes";
 import { useDispatch, useSelector } from "react-redux";
 import { Actions as CartActions } from "../../../redux/ducks/cart";
 
@@ -30,7 +30,6 @@ export function ShoppingCart() {
     (acc, products) => acc + products.price * products.amount,
     0
   );
-  console.log(total);
 
   const decreaseProduct = (product) => {
     const itemIndex = cart.findIndex((item) => item.id === product.id);
@@ -61,10 +60,6 @@ export function ShoppingCart() {
     }
   };
 
-  useEffect(() => {
-    console.log("cart", cart);
-  }, [cart]);
-
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -80,25 +75,29 @@ export function ShoppingCart() {
                   <img src={item.img} alt="" />
                 </div>
 
-                <div>
+                <div className={styles.cart_product}>
                   <div className={styles.product}>
-                    <p>{item.title}</p>
+                    <h3>{item.title}</h3>
                   </div>
 
-                  <div>
+                  <div className={styles.price}>
                     <span>R$ {item.price}</span>
                   </div>
 
                   <div className={styles.addCart}>
-                    <button onClick={() => increaseProduct(item)}>+</button>
-                    <button>{item.amount}</button>
                     <button onClick={() => decreaseProduct(item)}>-</button>
+                    <button>{item.amount}</button>
+                    <button onClick={() => increaseProduct(item)}>+</button>
                   </div>
 
                   <div className={styles.remove}>
-                    <button onClick={() => handleRemove(item.id)}>
-                      Remove
-                    </button>
+                    <Button
+                      onClick={() => handleRemove(item.id)}
+                      variant="contained"
+                      size="medium"
+                    >
+                      Remover
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -116,13 +115,6 @@ export function ShoppingCart() {
                 <div className={styles.value}>
                   <h2>R$ {total.toFixed(2)}</h2>
                 </div>
-              </div>
-
-              <div className={styles.purchaseSummary}>
-                <div className={styles.subtotal}>
-                  <h2>Desconto</h2>
-                </div>
-                <div className={styles.value}></div>
               </div>
 
               <div className={styles.purchaseSummary}>
@@ -157,46 +149,3 @@ export function ShoppingCart() {
     </>
   );
 }
-
-// const Cart = ({ cart, setCart, handleChange }) => {
-//   const [price, setPrice] = useState(0);
-//   const handleRemove = (id) => {
-//     const arr = cart.filter((item) => item.id !== id);
-//     setCart(arr);
-//     handlePrice();
-//   };
-//   const handlePrice = () => {
-//     let ans = 0;
-//     cart.map((item) => (ans += item.amount * item.price));
-//     setPrice(ans);
-//   };
-//   useEffect(() => {
-//     handlePrice();
-//   });
-//   return (
-//     <article>
-//       {cart.map((item) => (
-//         <div className="cart_box" key={item.id}>
-//           <div className="cart_img">
-//             <img src={item.img} alt="" />
-//             <p>{item.title}</p>
-//           </div>
-//           <div>
-//             <button onClick={() => handleChange(item, 1)}>+</button>
-//             <button>{item.amount}</button>
-//             <button onClick={() => handleChange(item, -1)}>-</button>
-//           </div>
-//           <div>
-//             <span>{item.price}</span>
-//             <button onClick={() => handleRemove(item.id)}>Remove</button>
-//           </div>
-//         </div>
-//       ))}
-//       <div className="total">
-//         <span>Total Price of your Cart</span>
-//         <span>Rs - {price}</span>
-//       </div>
-//     </article>
-//   );
-// };
-// export default Cart;

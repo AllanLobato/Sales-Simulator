@@ -65,13 +65,29 @@
 }
 
 .summaryDynamic{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    align-items: center;
+    
     padding: 1rem;
     background: #f4f4f4;
     color: black;
     width: 100%;
+}
+
+.produto{
+    margin-right: auto;
+}
+
+.qtde{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.price{
+    margin-left: auto;
+
 }
 
 .summary{

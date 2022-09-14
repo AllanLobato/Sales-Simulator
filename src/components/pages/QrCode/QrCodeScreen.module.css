@@ -23,6 +23,8 @@
 
 .boletoPay{
     padding: 1rem;
+    padding-top: 3rem;
+    color: #219653;
 }
 
 .line{
@@ -33,6 +35,12 @@
 
 .finalValue{
     padding: 1rem;
+    color: #219653;
+}
+
+.qrCode {
+    padding-top: 2rem;
+justify-content: center;
 }
 
 .warning{
@@ -70,4 +78,40 @@
     padding: 1rem;
     background: #f4f4f4;
     width: 100%;
+}
+
+.summaryFixed{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+    padding: 1rem;
+    background: #f4f4f4;
+    color: black;
+    width: 100%;
+}
+
+.summaryDynamic{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    align-items: center;
+    
+    padding: 1rem;
+    background: #f4f4f4;
+    color: black;
+    width: 100%;
+}
+
+.produto{
+    margin-right: auto;
+}
+
+.qtde{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.price{
+    margin-left: auto;
+
 }

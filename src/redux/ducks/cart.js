@@ -1,4 +1,3 @@
-import produce from 'immer';
 
 export const Types = {
   UPDATE_CART: 'UPDATE_CART',
@@ -14,7 +13,6 @@ export const Actions = {
   }
 
   export default function cart(state = [], action) {
-    console.log('action', action)
     switch (action.type) {
       case Types.UPDATE_CART:
         return [...action.payload];

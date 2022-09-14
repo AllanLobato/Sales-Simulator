@@ -1,13 +1,16 @@
 import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import listRoutes from "../../routes";
+import { listRoutes } from "../../routes";
 
 import logo from "../../assets/logo.svg";
 import PersonIcon from "@mui/icons-material/Person";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
-export function Header({ setShow, cartSize }) {
+export function Header({ cartSize }) {
+  const user = JSON.parse(sessionStorage.getItem("user"));
+
+  const newName = JSON.stringify(user.email.split("@")[0]);
   return (
     <header className={styles.header}>
       <Link to={listRoutes.catalog.path}>
@@ -19,7 +22,7 @@ export function Header({ setShow, cartSize }) {
           <PersonIcon fontSize="large" />
         </div>
         <div>
-          <p>Olá, Fulano</p>
+          <p>Olá, {newName}</p>
         </div>
 
         <Link to={listRoutes.shoppingCart.path}>

@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./SummaryScreen.module.css";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
-import listRoutes from "../../../routes";
+import listRoutes from "../../../routes/listRoutes";
 import { useSelector } from "react-redux";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -36,7 +36,7 @@ export function SummaryScreen() {
             </div>
             <div className={styles.line}></div>
             <div className={styles.finalValue}>
-              <h1>{total.toFixed(2)}</h1>
+              <h1>R$ {total.toFixed(2)}</h1>
             </div>
             ;
             <div className={styles.warning}>
@@ -67,36 +67,31 @@ export function SummaryScreen() {
               <h2>Resumo do Pedido</h2>
             </div>
             <div className={styles.summaryFixed}>
-              <thead>
-                <tr>
-                  <th />
-                  <th>PRODUTO</th>
-                  <th>QTD</th>
-                  <th>SUBTOTAL</th>
-                  <th />
-                </tr>
-              </thead>
+              <h4>PRODUTO</h4>
+              <h4>QTD</h4>
+              <h4>SUBTOTAL</h4>
             </div>
-            <div className={styles.summaryDynamic}>
+            <tbody className={styles.summaryDynamic}>
               {cart.map((item) => (
                 <>
-                  <tr>
-                    <td>{item.title}</td>
+                  <tr className={styles.produto}>
+                    <td>
+                      {item.title} - R${item.price.toFixed(2)}
+                    </td>
                   </tr>
-                  <tr>
+                  <tr className={styles.qtde}>
                     <td>{item.amount}</td>
                   </tr>
-                  <tr>
-                    <td>{item.price}</td>
+                  <tr className={styles.price}>
+                    <td>R${item.amount * item.price.toFixed(2)}</td>
                   </tr>
                 </>
               ))}
-            </div>
+            </tbody>
             <div className={styles.summary}>
               <h2>Total</h2>
-              <h2>{total.toFixed(2)}</h2>
+              <h2>R$ {total.toFixed(2)}</h2>
             </div>
-            ;
           </div>
         </div>
       </ThemeProvider>

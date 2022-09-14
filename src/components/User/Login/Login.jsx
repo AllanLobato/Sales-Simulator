@@ -7,7 +7,7 @@ import logo from "../../../assets/logo.svg";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import validatorSchema from "./validatorSchema";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Actions as ClientActions } from "../../../redux/ducks/client";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -37,9 +37,7 @@ export default function Login() {
     validationSchema: validatorSchema,
   });
 
-  useEffect(() => {
-    console.log(formik);
-  }, [formik]);
+  useEffect(() => {}, [formik]);
 
   const user = {
     email: formik.values.login,
@@ -54,9 +52,8 @@ export default function Login() {
   // Obtém os dados da sessionStorage
 
   const handleSubmitStorage = () => {
-    var newUser = sessionStorage.getItem("user");
-    console.log(newUser);
-    dispatch(ClientActions.clientLogin(newUser));
+    const user = sessionStorage.getItem("user");
+    dispatch(ClientActions.clientLogin(user));
   };
 
   return (
@@ -117,18 +114,18 @@ export default function Login() {
               <p>Esqueceu a senha?</p>
             </div>
             <div className={styles.button}>
-              {/* <Link to="catalog"> */}
-              <Button
-                fullWidth={true}
-                variant="contained"
-                onClick={(formik.handleSubmit, handleSubmitStorage)}
-                disabled={
-                  formik.errors.login || formik.errors.password ? true : false
-                }
-              >
-                Entrar
-              </Button>
-              {/* </Link> */}
+              <Link to="catalog">
+                <Button
+                  fullWidth={true}
+                  variant="contained"
+                  onClick={(formik.handleSubmit, handleSubmitStorage)}
+                  disabled={
+                    formik.errors.login || formik.errors.password ? true : false
+                  }
+                >
+                  Entrar
+                </Button>
+              </Link>
             </div>
             <div>
               <Link to="registration">
