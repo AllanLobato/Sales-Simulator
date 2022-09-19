@@ -11,6 +11,9 @@ export function Header({ cartSize }) {
   const user = JSON.parse(sessionStorage.getItem("user"));
 
   const newName = JSON.stringify(user.email.split("@")[0]);
+
+  const newNameUser = newName.slice(1, -1);
+
   return (
     <header className={styles.header}>
       <Link to={listRoutes.catalog.path}>
@@ -22,7 +25,7 @@ export function Header({ cartSize }) {
           <PersonIcon fontSize="large" />
         </div>
         <div>
-          <p>Olá, {newName}</p>
+          <p>Olá, {newNameUser}</p>
         </div>
 
         <Link to={listRoutes.shoppingCart.path}>

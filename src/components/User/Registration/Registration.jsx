@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import styles from "./Registration.module.css";
@@ -39,10 +39,6 @@ export default function Registration() {
     validationSchema: validatorSchema,
   });
 
-  useEffect(() => {
-    console.log(formik);
-  }, [formik]);
-
   const newUser = {
     email: formik.values.login,
     password: formik.values.password,
@@ -57,7 +53,6 @@ export default function Registration() {
 
   const handleSubmitStorage = () => {
     var newUser = sessionStorage.getItem("newUser");
-    console.log(newUser);
     dispatch(ClientActions.clientRegister(newUser));
   };
 
@@ -124,8 +119,8 @@ export default function Registration() {
             <div className={styles.forgotPass}>
               <p>Esqueceu a senha?</p>
             </div>
-            <div className={listRoutes.login.path}>
-              <Link to={listRoutes.catalog.path}>
+            <div className={styles.button}>
+              <Link to={listRoutes.login.path}>
                 <Button
                   fullWidth={true}
                   variant="contained"

@@ -21,36 +21,3 @@ export const Actions = {
          }
         };
 
-
-
-
-        // const itemInCart = state.find((item) => item.id === action.product.id);
-        // if (itemInCart) {
-        //   itemInCart.amount++;
-        // } else {
-        //   state.push({ ...action.product, amount: 1 });
-        // }
-      
-
-      // case Types.CART_REMOVE:
-      //   return produce(state, draft => {
-      //     const productIndex = draft.findIndex(p => p.id === action.id);
-      //     if (productIndex >= 0) {
-      //       draft.splice(productIndex, 1);
-      //     }
-      //   });
-      // case Types.UPDATE_AMOUNT: {
-      //   if (action.amount <= 0) {
-      //     return state;
-      //   }
-      //   return produce(state, draft => {
-      //     const productIndex = draft.findIndex(p => p.id === action.id);
-      //     if (productIndex >= 0) {
-      //       draft[productIndex].amount = Number(action.amount);
-      //     }
-      //   });
-      // }
-      // default:
-      //   return state;
-  //   }
-  // }
